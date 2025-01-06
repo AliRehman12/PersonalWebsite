@@ -80,7 +80,7 @@ export default function NavBar() {
                 <img
                   className="h-12 w-auto"
                   src={images.brandLogoDark}
-                  alt="Go Back to Home"
+                  alt="Home"
                   height={12}
                   width={245}
                 />
@@ -88,7 +88,7 @@ export default function NavBar() {
                 <img
                   className="h-12 w-auto"
                   src={images.brandLogoLight}
-                   alt="Go Back to Home"
+                   alt="Home"
                   height={12}
                   width={245}
                 />
