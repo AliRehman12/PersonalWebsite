@@ -6,6 +6,7 @@ import TwoColumnCard from "./components/TwoColumnCard";
 import FeaturedAlternate from "./components/FeaturedAlternate";
 import Footer from "./components/Footer";
 import UsesList from "./components/UsesList";
+import { Analytics } from "@vercel/analytics/react"; 
 
 import "./index.css";
 import SectionWrapper from "./components/Global/SectionWrapper";
@@ -36,6 +37,7 @@ function App() {
             <UsesList />
           </SectionWrapper>
           <Footer />
+          <Analytics /> {/* Include the Analytics component */}
         </>
       ) : (
         <div className="loading-wrapper">
