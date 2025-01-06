@@ -11,7 +11,7 @@ const projects = [
     heading: "Ali Rehman's Website Social Portfolio",
     description:
       "<p>A simple personal portfolio website built with HTML, CSS, and JavaScript showcases an individual’s skills, projects, and contact details. It includes sections like Home, About, Portfolio, and Contact, with responsive design and basic interactive features for an engaging user experience.</p>",
-    websiteLink: "https://github.com/alirehman765/Personal-Portfolio-Web",
+      githubLink: "https://github.com/alirehman765/Personal-Portfolio-Web",
     // techno
     html: true,
     css: true,
