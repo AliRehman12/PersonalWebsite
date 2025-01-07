@@ -50,7 +50,7 @@ const projects = [
     image: images.sunnysideImage,
     heading: "EmpowerHer....",
     description:
-      "<p>Advance PERN Stack project! Also had a lot of fun working with the UI of this project.EmpowerHer is a marketplace built with React, Vite, TailwindCSS, Next.js, PostgreSQL, and JavaScript. It supports women entrepreneurs by providing tools for business management, mentorship, and a platform to sell sustainable products</p>",
+      "<p>Advance PERN Stack Final Year Project! Also had a lot of fun working with the UI of this project.EmpowerHer is a marketplace built with React, Vite, TailwindCSS, Next.js, PostgreSQL,Sockets io, and JavaScript. It supports women entrepreneurs by providing tools for business management, mentorship, and a platform to sell sustainable products along with the customers to use Visual Try-on to try the products</p>",
       websiteLink: "https://ali-rehman.com/",
       githubLink: "https://github.com/MominaFaisal/EmpowerHer",
     // techno
