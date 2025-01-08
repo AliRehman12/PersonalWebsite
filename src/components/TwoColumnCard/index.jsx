@@ -17,6 +17,7 @@ const TwoColumnCard = () => {
           },
           onscreen: {
             y: 0,
+            rotate: [0, 10, -10, 0],
             transition: {
               type: "spring",
               bounce: 0.4,
@@ -78,7 +79,7 @@ const TwoColumnCard = () => {
           },
           onscreen: {
             y: 0,
-            // rotate: -10,
+             rotate: [0, 10, -10, 0],
             transition: {
               type: "spring",
               bounce: 0.4,

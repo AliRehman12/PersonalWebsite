@@ -2,7 +2,8 @@ import React from "react";
 import images from "../../constants/image";
 import { motion } from "framer-motion";
 import { FaEye } from "react-icons/fa";
-import './HeroSection.css'; // Assuming you have a CSS file for HeroSection styles
+import Typical from "react-typical";
+import './HeroSection.css'; 
 
 const socials = [
   {
@@ -35,7 +36,12 @@ const HeroSection = () => {
               transition={{ type: "linear", duration: 0.5 }}
               className="hero__heading"
             >
-              Ali Rehman
+            <Typical
+            steps={['Ali Rehman',2500,'Ali',2000]}
+            
+            loop={Infinity}
+            wrapper="span"/>
+             
             </motion.h1>
             <FaEye className="eye-icon" />
           </div>
@@ -65,7 +71,7 @@ const HeroSection = () => {
               >
                 <a href={social.link} target="_blank" rel="noopener noreferrer">
                   <img
-                    className="h-14 w-14 p-4 transition-all dark:invert"
+                    className="h-14 w-14 p-4 transition-all dark:invert social-icon"
                     src={social.logo}
                     alt={social.alt}
                   />
