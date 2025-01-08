@@ -2,7 +2,7 @@ import React from "react";
 import images from "../../constants/image";
 import { motion } from "framer-motion";
 import { FaEye } from "react-icons/fa";
-import Typical from "react-typical";
+// import Typical from "react-typical";
 import './HeroSection.css'; 
 
 const socials = [
@@ -36,11 +36,12 @@ const HeroSection = () => {
               transition={{ type: "linear", duration: 0.5 }}
               className="hero__heading"
             >
-           <Typical
+           {/* <Typical
                 steps={['Ali Rehman', 2000, 'Ali', 1000]}
                 loop={Infinity}
                 wrapper="span"
-              />
+              /> */}
+              Ali Rehman
             </motion.h1>
             <FaEye className="eye-icon" />
           </div>
