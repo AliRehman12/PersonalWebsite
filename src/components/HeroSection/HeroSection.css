@@ -1,6 +1,16 @@
 .hero__heading {
   @apply text-5xl text-primary font-display relative sm:text-7xl md:text-9xl dark:text-white;
-  transition: all 1.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
 }
 
 .eye-icon {
@@ -9,7 +19,7 @@
   color: rgb(160, 159, 158);
   animation: blink 3s infinite;
   margin-top: -100px;
-  margin-left: 1099px;
+  margin-left: 1070px;
 }
 
 @media (max-width: 768px) {
@@ -21,21 +31,12 @@
   }
 }
 
-@keyframes blink {
-  0%, 20%, 40%, 60%, 80%, 100% {
-    transform: scaleY(1);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: scaleY(0.1);
-  }
-}
-
 @keyframes hoverEffect {
-  0%, 75% {
+  0%, 95% {
     transform: scale(1);
   }
   100% {
-    transform: scale(1.4);
+    transform: scale(1.1);
   }
 }
 

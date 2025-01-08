@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import images from "../../constants/image";
 import { motion } from "framer-motion";
 import { FaEye } from "react-icons/fa";
-// import Typical from "react-typical";
-import './HeroSection.css'; 
+import './HeroSection.css'; // Assuming you have a CSS file for HeroSection styles
 
 const socials = [
   {
@@ -24,6 +23,35 @@ const socials = [
 ];
 
 const HeroSection = () => {
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const words = ['Ali Rehman', 'Ali'];
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const i = loopNum % words.length;
+      const fullText = words[i];
+
+      setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+
+      setTypingSpeed(isDeleting ? 30 : 150);
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed]);
+
   return (
     <section id="home" className="bg-white dark:bg-primary">
       <div className="container relative">
@@ -36,12 +64,7 @@ const HeroSection = () => {
               transition={{ type: "linear", duration: 0.5 }}
               className="hero__heading"
             >
-           {/* <Typical
-                steps={['Ali Rehman', 2000, 'Ali', 1000]}
-                loop={Infinity}
-                wrapper="span"
-              /> */}
-              Ali Rehman
+              <span>{text}</span>
             </motion.h1>
             <FaEye className="eye-icon" />
           </div>
