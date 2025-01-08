@@ -1,6 +1,6 @@
 .hero__heading {
   @apply text-5xl text-primary font-display relative sm:text-7xl md:text-9xl dark:text-white;
-  transition: all 1s ease-in-out;
+  transition: all 1.5s ease-in-out;
 }
 
 .eye-icon {

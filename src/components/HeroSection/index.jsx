@@ -36,12 +36,11 @@ const HeroSection = () => {
               transition={{ type: "linear", duration: 0.5 }}
               className="hero__heading"
             >
-            <Typical
-            steps={['Ali Rehman',2500,'Ali',2000]}
-            
-            loop={Infinity}
-            wrapper="span"/>
-             
+           <Typical
+                steps={['Ali Rehman', 2000, 'Ali', 1000]}
+                loop={Infinity}
+                wrapper="span"
+              />
             </motion.h1>
             <FaEye className="eye-icon" />
           </div>
