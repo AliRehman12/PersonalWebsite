@@ -47,7 +47,7 @@ const projects = [
   },
   {
     id: 4,
-    image: images.sunnysideImage,
+    image: images.EmpHer,
     heading: "EmpowerHer....",
     description:
       "<p>Advance PERN Stack Final Year Project! Also had a lot of fun working with the UI of this project.EmpowerHer is a marketplace built with React, Vite, TailwindCSS, Next.js, PostgreSQL,Sockets io, and JavaScript. It supports women entrepreneurs by providing tools for business management, mentorship, and a platform to sell sustainable products along with the customers to use Visual Try-on to try the products</p>",

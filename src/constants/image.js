@@ -16,17 +16,18 @@ import mongodbLogo from "../assets/logo/mongodb-logo.svg";
 import postgresqlLogo from "../assets/logo/postgresql-logo.svg";
 import hubspotLogo from "../assets/logo/hubspot-logo.svg";
 import personalportfoliodashboard from "../assets/projects/personalportfoliodashboard.png";
+import EmpHer from "../assets/projects/EmpHer.png";
 import felixImage from "../assets/my_pic.png";
 import catifyImage from "../assets/projects/catify-visible.png";
 import agencyImage from "../assets/projects/agency-visible.png";
 import pixiedustImage from "../assets/projects/pixiedust.png";
-import sunnysideImage from "../assets/projects/sunnyside-visible.png";
 import slothImage from "../assets/projects/languagesloth-visible.png";
 import errorIllustration from "../assets/illustrations/404-vector.svg";
 import successIllustration from "../assets/illustrations/success-vector.svg";
 
 
 export default {
+  EmpHer,
   personalportfoliodashboard,
   pixiedustImage,
   emailIcon,
@@ -49,7 +50,6 @@ export default {
   felixImage,
   catifyImage,
   agencyImage,
-  sunnysideImage,
   slothImage,
   errorIllustration,
   successIllustration,
