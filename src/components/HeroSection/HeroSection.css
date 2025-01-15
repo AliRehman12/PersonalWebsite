@@ -16,8 +16,8 @@
 .eye-icon {
   width: 100px;
   height: 100px;
-  color: rgb(160, 159, 158);
-  animation: blink 3s infinite;
+  color: rgb(30, 30, 30);
+  animation: blink 1.2s infinite;
   margin-top: -100px;
   margin-left: 1070px;
 }
