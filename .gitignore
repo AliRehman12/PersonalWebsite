@@ -7,7 +7,6 @@
 /coverage
 
 # Production
-/node_modules
 /build
 /dist
 
