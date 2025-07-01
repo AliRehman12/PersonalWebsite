@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 const TwoColumnCard = () => {
   return (
-<<<<<<< HEAD
     <>
       {/* DevnTech Current Position */}
       <motion.div
@@ -34,7 +33,7 @@ const TwoColumnCard = () => {
             DevnTech Islamabad
             <span className="mt-4 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
               <CalendarIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
-              July, 2025 - PRESENT
+              JULY, 2025 - PRESENT
             </span>
             <span className="mt-2 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
               <BriefcaseIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
@@ -110,14 +109,6 @@ const TwoColumnCard = () => {
         viewport={{ once: true }}
         className="grid grid-cols-1 gap-10 items-center md:grid-cols-2"
       >
-=======
-    <motion.div
-      initial="offscreen"
-      whileInView="onscreen"
-      viewport={{ once: true }}
-      className="grid grid-cols-1 gap-10 items-center md:grid-cols-2"
-    >
->>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
       <motion.div
         variants={{
           offscreen: {
@@ -133,22 +124,14 @@ const TwoColumnCard = () => {
             },
           },
         }}
-<<<<<<< HEAD
-        // whileHover={{ scale: 1.02 }}
-=======
         whileHover={{ scale: 1.02 }}
->>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
         className="cursor-pointer bg-gray-50 px-6 py-16 rounded-3xl h-full filter shadow-md relative md:px-10 dark:bg-primary-500"
       >
         <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
         
           <span className="mt-4 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
             <CalendarIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
-<<<<<<< HEAD
-            JUNE, 2024 - September 2024
-=======
-            JUNE, 2023 - PRESENT
->>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
+            JUNE, 2024 - SEPTEMBER, 2024
           </span>
           <span className="mt-2 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
             <BriefcaseIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
@@ -203,11 +186,7 @@ const TwoColumnCard = () => {
             },
           },
         }}
-<<<<<<< HEAD
-        // whileHover={{ scale: 1.02 }}
-=======
         whileHover={{ scale: 1.02 }}
->>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
         className="bg-gray-50 px-6 py-16 rounded-3xl h-full relative filter shadow-md md:px-10 dark:bg-primary-500"
       >
         <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
@@ -220,11 +199,7 @@ const TwoColumnCard = () => {
           </a>
           <span className="mt-4 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
             <CalendarIcon className=" text-neutral-600 h-4 mr-2 dark:text-neutral-300" />
-<<<<<<< HEAD
-            DECEMBER, 2024 - April 2025
-=======
-            DECEMBER, 2024 - PRESENT
->>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
+            DECEMBER, 2024 - APRIL 2025
           </span>
           <span className="mt-2 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
             <BriefcaseIcon className="text-neutral-600 h-4 mr-2 dark:text-neutral-300" />
@@ -261,12 +236,8 @@ const TwoColumnCard = () => {
           </li>
         </ul>
       </motion.div>
-<<<<<<< HEAD
       </motion.div>
     </>
-=======
-    </motion.div>
->>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
   );
 };
 
