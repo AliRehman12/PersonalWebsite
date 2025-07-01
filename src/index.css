@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-default;
+  }
+
+  body * {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}
+
+@layer components {
+  .hero__heading {
+    @apply text-5xl text-primary font-display relative sm:text-7xl md:text-9xl dark:text-white;
+  }
+
+  .hero__heading::before {
+    @apply text-xs text-primary-400 font-medium font-default absolute -top-6 -left-2 sm:text-base dark:text-opacity-80 dark:text-white;
+    content: "I AM";
+  }
+
+  .hero__heading::after {
+    @apply text-xs font-medium font-default absolute -bottom-6 -right-10 sm:text-base dark:text-opacity-80;
+    content: "BACK-END DEV";
+    font-family: cursive;
+    animation: changeText 12s infinite;
+  }
+
+  @keyframes changeText {
+    0%, 33% {
+      content: "BACK-END DEV";
+      color: #ef4444; /* Red */
+    }
+    34%, 66% {
+      content: "SOFTWARE ENGINEER";
+      color: #3b82f6; /* Blue */
+    }
+    67%, 100% {
+      content: "WEB DEV";
+      color: #7695ec; /* Dark Blue */
+    }
+    34%, 100% {
+      content: "PROBLEM SOLVER";
+      color: #797a09; /* Light Yellowish*/
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero__heading::after {
+      @apply text-xs font-medium font-default absolute -bottom-4 -right-2 dark:text-opacity-80;
+      animation: changeText 12s infinite;
+    }
+  }
+
+}
