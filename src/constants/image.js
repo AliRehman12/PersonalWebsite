@@ -22,13 +22,19 @@ import catifyImage from "../assets/projects/catify-visible.png";
 import agencyImage from "../assets/projects/agency-visible.png";
 import pixiedustImage from "../assets/projects/pixiedust.png";
 import slothImage from "../assets/projects/languagesloth-visible.png";
+<<<<<<< HEAD
 import EmpowerHerImage from "../assets/projects/EmpowerherImage.png";
+=======
+>>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
 import errorIllustration from "../assets/illustrations/404-vector.svg";
 import successIllustration from "../assets/illustrations/success-vector.svg";
 
 
 export default {
+<<<<<<< HEAD
   EmpowerHerImage,
+=======
+>>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
   EmpHer,
   personalportfoliodashboard,
   pixiedustImage,

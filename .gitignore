@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -80,3 +81,7 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+=======
+.env
+.node_modules
+>>>>>>> 7e20dd6a919ea36f13becff10e09dc82cd09ef03
