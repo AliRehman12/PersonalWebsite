@@ -10,7 +10,7 @@ const Footer = () => {
           © {currentYear} Ali Rehman. All rights reserved.
         </p>
         <p className="text-primary font-semibold text-base dark:text-white">
-          Made with {"<3"}
+          © Coded By {"Ali Rehman"}
         </p>
       </div>
     </div>
