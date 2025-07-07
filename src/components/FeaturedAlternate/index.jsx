@@ -64,7 +64,26 @@ const projects = [
 
    
   },
+ {
+    id: 5,
+    image: images.TrainflowAI,
+    heading: "Trainflow AI",
+    description:
+      "<p>A web-based interface for dataset upload, data type selection (image, audio, tabular), and training settings configuration. - Edge Node: Local web server for initial data preprocessing and temporary storage. - Cloud Infrastructure: Centralized or private cloud for intensive model training and results storage. - Database: Stores datasets, trained model weights, and performance metrics. - Edge Device Deployment: Enables model deployment and inference near the data source.</p>",
+      websiteLink: "https://ali-rehman.com/",
+      githubLink: "https://github.com/AliRehman12/Trainflow-AI",
+    // techno
+    javascript: true,
+    nodejs:true,
+    mongodb: true,
+    postgresql: true,
+    YOLO:true,
+    next: true,
+    tailwind: true,
+  
 
+   
+  },
 ];
 
 const CardGrid = () => {

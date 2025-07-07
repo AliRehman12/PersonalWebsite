@@ -91,12 +91,60 @@ const TwoColumnCard = () => {
               Current Role
             </h3>
             <p className="text-lg text-primary-400 dark:text-neutral-200 mb-6">
-              Full Stack Development at DevnTech
+              Full Stack Development at DevnTechs
             </p>
             <div className="bg-primary-100 dark:bg-primary-600 rounded-lg p-6">
-              <p className="text-primary-600 dark:text-primary-200 font-medium">
-                "Focused on delivering innovative web solutions and contributing to cutting-edge software development projects."
+              <p className="text-primary-600 dark:text-primary-200 font-medium mb-4">
+                "Building end-to-end web applications with a focus on performance, scalability, and user experience."
               </p>
+              
+              <div className="text-left">
+                <h4 className="text-white dark:text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                  Technical Skills
+                </h4>
+                
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <h5 className="text-white dark:text-white font-medium mb-1">Frontend:</h5>
+                    <ul className="text-white dark:text-white list-disc list-inside pl-2 space-y-1">
+                      <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                      <li>React.js, Redux, Bootstrap, Tailwind CSS</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-white dark:text-white font-medium mb-1">Backend:</h5>
+                    <ul className="text-white dark:text-white list-disc list-inside pl-2 space-y-1">
+                      <li>Node.js, Express.js</li>
+                      <li>RESTful APIs</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-white dark:text-white font-medium mb-1">Database:</h5>
+                    <ul className="text-white dark:text-white list-disc list-inside pl-2">
+                      <li>MongoDB, PostgreSQL, MySQL</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-white dark:text-white font-medium mb-1">DevOps & Deployment:</h5>
+                    <ul className="text-white dark:text-white list-disc list-inside pl-2">
+                      <li>Docker, AWS, Netlify, Vercel</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-white dark:text-white font-medium mb-1">Tools & Others:</h5>
+                    <ul className="text-white dark:text-white list-disc list-inside pl-2 space-y-1">
+                      <li>Git, GitHub</li>
+                      <li>Agile/Scrum, Jira, Slack, Asana</li>
+                      <li>Figma</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         </motion.div>
