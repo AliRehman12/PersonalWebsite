@@ -6,12 +6,16 @@ const usesData = [
     items: [
       
       {
-        name: "Laptop - Lenovo Ideapad Flex 5",
-        link: "https://www.lenovo.com/pk/en/p/laptops/ideapad/ideapad-flex-series/ideapad-flex-5-gen-8-16-inch-amd/len101i0065?orgRef=https%253A%252F%252Fwww.google.com%252F&srsltid=AfmBOoqBlJgrimZf6qbbPT9C9_8W67ATawthxHYnWHQXpws7K7iVr58E",
+        name: "Laptop - Lenovo Ideapad Flex 5 && MacBook Pro 16 M1 pro",
+        link: "https://www.apple.com/macbook-pro/",
       },
       {
-        name: "Mouse - Glorious Model O Wireless",
-        link: "https://www.gloriousgaming.com/products/glorious-model-o-wireless-matte-white",
+        name: "Mouse - Razer DeathAdder V4 Pro",
+        link: "https://www.razer.com/gaming-mice/razer-deathadder-v4-pro",
+      },
+       {
+        name: "Keytboard - Tezaree TK63 Pro ",
+        link: "https://www.amazon.com/Tezarre-Wireless-Bluetooth-Mechanical-Hot-Swappable/dp/B09Q8XDNP1/ref=sr_1_3?crid=CFN369QKVRU1&dib=eyJ2IjoiMSJ9.9QrlLYjdObNRKusmLNV1hVYfPfmXFGji2ttBesXstlW4o-mFRfoCE4v__KhNewkikqrj3Z2ElqzUkn9G2JZ8CUFGLyf81Kv-zICavrbWdkKuEIyjTn7N427P2mAOtZvH.DJs7dt9LhLWSfAPqwGW1GWMxuvrdyWRcvVB1udm_rYg&dib_tag=se&keywords=tezarre+tk63+pro&qid=1763294260&sprefix=tezarre+tk63+pro%2Caps%2C319&sr=8-3",
       },
      
      
@@ -28,14 +32,7 @@ const usesData = [
     ],
   },
   
-  {
-    section: "Other Software",
-    items: [
-      { name: "Notion", link: "https://www.notion.so/1db2ac43dc2f469a8d40ba9afc36d92a" },
-      { name: "Jira", link: "https://home.atlassian.com/o/8156957c-8k74-1ac8-6j8k-6kj9451288d0/?cloudId=5478679e-5b92-4ce5-8a5b-8ba6274055f3" },
   
-    ],
-  },
 ];
 
 const UsesList = () => {
@@ -47,30 +44,51 @@ const UsesList = () => {
       transition={{ type: "linear", duration: 0.5 }}
       className="container relative"
     >
-      <div className="flex flex-col items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {usesData.map((section, index) => (
-          <div key={index} className="mb-6">
-            <h2 className="text-2xl font-bold text-primary mb-4 dark:text-white">
-              {section.section}
-            </h2>
-            <ul>
-              {section.items.map((item, index) => (
-                <li
-                  key={index}
-                  className="list-inside list-disc leading-loose text-neutral-700 dark:text-neutral-300"
+          <motion.div 
+            key={index} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            whileHover={{ y: -5 }}
+            className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-opacity-90 transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-secondary text-2xl font-mono">//</span>
+              <h2 className="text-2xl font-bold text-primary dark:text-white font-mono">
+                {section.section}
+              </h2>
+            </div>
+            <ul className="space-y-3">
+              {section.items.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * idx }}
+                  className="flex items-start gap-2 group"
                 >
-                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <span className="text-secondary mt-1 group-hover:scale-125 transition-transform">▹</span>
+                  <a 
+                    href={item.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 text-neutral-700 dark:text-neutral-300 hover:text-secondary dark:hover:text-secondary transition-colors leading-relaxed"
+                  >
                     {item.name}
                     {item.link && (
-                      <span className="ml-1 inline-flex align-middle">
-                        <ExternalLinkIcon className="h-5 w-5" />
+                      <span className="ml-2 inline-flex align-middle opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ExternalLinkIcon className="h-4 w-4" />
                       </span>
                     )}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </motion.div>
