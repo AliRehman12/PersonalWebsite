@@ -20,6 +20,7 @@ import elixirLogo from "../assets/logo/elixir-logo.svg";
 import erlangLogo from "../assets/logo/erlang-logo.svg";
 import phoenixLogo from "../assets/logo/phoenix-logo.svg";
 import kotlinLogo from "../assets/logo/kotlin-logo.svg";
+import dockerLogo from "../assets/logo/docker-logo.svg";
 import personalportfoliodashboard from "../assets/projects/personalportfoliodashboard.png";
 import EmpHer from "../assets/projects/EmpHer.png";
 import felixImage from "../assets/my_pic.png";
@@ -30,7 +31,7 @@ import slothImage from "../assets/projects/languagesloth-visible.png";
 import TrainflowAI from "../assets/projects/Trainflow AI.png";
 import EmpowerHerImage from "../assets/projects/EmpowerherImage.png";
 import AutolinkImage from "../assets/projects/Autolink.png";
-import ClinicProImage from "../assets/projects/Autolink.png";
+import ClinicProImage from "../assets/projects/ClinicPro.png";
 import errorIllustration from "../assets/illustrations/404-vector.svg";
 import successIllustration from "../assets/illustrations/success-vector.svg";
 
@@ -65,6 +66,7 @@ TrainflowAI,
   erlangLogo,
   phoenixLogo,
   kotlinLogo,
+  dockerLogo,
   felixImage,
   catifyImage,
   agencyImage,
