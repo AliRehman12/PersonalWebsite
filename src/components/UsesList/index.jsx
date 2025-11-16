@@ -6,14 +6,17 @@ const usesData = [
     items: [
       
       {
-        name: "Laptop - Lenovo Ideapad Flex 5",
+        name: "Laptop - Lenovo Ideapad Flex 5 && MacBook Pro 16 M1 Pro",
         link: "https://www.lenovo.com/pk/en/p/laptops/ideapad/ideapad-flex-series/ideapad-flex-5-gen-8-16-inch-amd/len101i0065?orgRef=https%253A%252F%252Fwww.google.com%252F&srsltid=AfmBOoqBlJgrimZf6qbbPT9C9_8W67ATawthxHYnWHQXpws7K7iVr58E",
       },
       {
-        name: "Mouse - Glorious Model O Wireless",
-        link: "https://www.gloriousgaming.com/products/glorious-model-o-wireless-matte-white",
+        name: "Mouse - Razer DeathAdder",
+        link: "https://www.czone.com.pk/mouse-razer-mouse-razer-deathadder-essential-wired-gaming-mouse-black-rz01-03850100-pakistan-p.12064.aspx",
       },
-     
+     {
+        name: "Keyboard - Teezare Tk63 pro Mechanical Keyboard",
+        link: "https://www.amazon.com/Tezarre-Wireless-Bluetooth-Mechanical-Hot-Swappable/dp/B09Q8XDNP1/ref=sr_1_4?crid=1D11AD7XUAX8T&dib=eyJ2IjoiMSJ9.9QrlLYjdObNRKusmLNV1hVYfPfmXFGji2ttBesXstlW4o-mFRfoCE4v__KhNewkikqrj3Z2ElqzUkn9G2JZ8CUFGLyf81Kv-zICavrbWdkKuEIyjTn7N427P2mAOtZvH.DJs7dt9LhLWSfAPqwGW1GWMxuvrdyWRcvVB1udm_rYg&dib_tag=se&keywords=tezarre+tk63+pro&qid=1763287442&sprefix=tezarre+tk63+pro+%2Caps%2C406&sr=8-4",
+      },
      
     ],
   },
@@ -28,14 +31,7 @@ const usesData = [
     ],
   },
   
-  {
-    section: "Other Software",
-    items: [
-      { name: "Notion", link: "https://www.notion.so/1db2ac43dc2f469a8d40ba9afc36d92a" },
-      { name: "Jira", link: "https://home.atlassian.com/o/8156957c-8k74-1ac8-6j8k-6kj9451288d0/?cloudId=5478679e-5b92-4ce5-8a5b-8ba6274055f3" },
-  
-    ],
-  },
+ 
 ];
 
 const UsesList = () => {
