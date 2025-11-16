@@ -61,6 +61,7 @@ const projects = [
     next: true,
     tailwind: true,
     postgresql: true,
+    docker: true,
 
    
   },
@@ -80,6 +81,7 @@ const projects = [
     YOLO:true,
     next: true,
     tailwind: true,
+    docker: true,
   },
   {
     id: 6,
@@ -93,6 +95,7 @@ const projects = [
     erlang: true,
     phoenix: true,
     postgresql: true,
+    docker: true,
   },
   {
     id: 7,
@@ -108,304 +111,625 @@ const projects = [
     typescript: true,
     next: true,
     postgresql: true,
+    docker: true,
   },
 ];
 
 const CardGrid = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState(null);
 
   return (
     <>
       <div className="flex flex-col gap-20 mt-32 md:gap-40 lg:gap-60">
-        {projects.map((proj) => (
+        {projects.map((proj, projectIndex) => (
           <motion.div
             viewport={{ once: true }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ type: "linear", duration: 0.5 }}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+              duration: 0.6,
+              delay: projectIndex * 0.1
+            }}
             key={proj.id}
-            className="featured-alt flex even:flex-col-reverse odd:flex-col-reverse gap-10 items-start relative md:gap-20 md:even:flex-row md:odd:flex-row-reverse"
+            onHoverStart={() => setHoveredProject(proj.id)}
+            onHoverEnd={() => setHoveredProject(null)}
+            className="featured-alt flex even:flex-col-reverse odd:flex-col-reverse gap-10 items-start relative md:gap-20 md:even:flex-row md:odd:flex-row-reverse group"
           >
-            <span className="featured-no absolute text-[10rem] text-primary-300 -top-32 opacity-20 hidden xl:block">
+            {/* Animated gradient background */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: hoveredProject === proj.id ? 0.1 : 0 }}
+              className="absolute inset-0 bg-gradient-to-br from-secondary via-primary to-purple-600 rounded-3xl blur-3xl -z-10"
+            />
+            
+            {/* Project number with enhanced styling */}
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 0.15, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="featured-no absolute text-[10rem] lg:text-[12rem] font-bold bg-gradient-to-br from-secondary to-primary bg-clip-text text-transparent -top-32 hidden xl:block"
+            >
               0{proj.id}
-            </span>
-            <div className="w-full z-10 md:w-1/2">
-              <h3 className="text-primary text-4xl font-semibold mb-4 dark:text-white">
-                {proj.heading}
-              </h3>
-              <RichText
-                className="text-primary-400 text-base dark:text-neutral-300"
-                content={proj.description}
-              />
-              <div className="flex flex-row relative">
-                <div className="flex flex-row justify-center gap-4 py-10">
-                  {proj.websiteLink && (
-                    <a
-                      className="relative inline-block text-sm font-medium text-white group focus:outline-none focus:ring"
-                      href={proj.websiteLink}
-                      target="_blank"
-                    >
-                      <span className="absolute inset-0 border border-secondary group-active:border-secondary"></span>
-                      <span className="flex items-center gap-3 px-4 py-3 transition-transform bg-secondary border border-secondary active:border-secondary active:bg-secondary group-hover:-translate-x-1 group-hover:-translate-y-1">
-                        <GlobeAltIcon className="w-6 h-6" />
-                        Link
-                      </span>
-                    </a>
-                  )}
-                </div>
-              </div>
-              <div className="relative">
-                <div
-                  className="absolute inset-0 flex items-center"
-                  aria-hidden="true"
+            </motion.span>
+            
+            <div className="w-full z-10 md:w-1/2 space-y-6">
+              {/* Title with gradient and animation */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                <motion.h3 
+                  whileHover={{ scale: 1.02 }}
+                  className="text-primary text-4xl lg:text-5xl font-bold mb-4 dark:text-white bg-gradient-to-r from-primary via-secondary to-primary dark:from-white dark:via-secondary dark:to-white bg-clip-text hover:text-transparent transition-all duration-300 cursor-default"
                 >
-                  <div className="w-full border-t border-gray-300" />
-                </div>
-                <div className="relative flex justify-center">
-                  <span className="uppercase px-2 bg-white text-sm text-gray-500 dark:bg-primary">
-                    TECHNOLOGIES USED
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center gap-4 py-6">
-                {proj.html && (
-                  <motion.div 
+                  {proj.heading}
+                </motion.h3>
+              </motion.div>
+              
+              {/* Description card with glassmorphism */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="backdrop-blur-md bg-white/30 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300"
+              >
+                <RichText
+                  className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
+                  content={proj.description}
+                />
+              </motion.div>
+              
+              {/* Link button with modern design */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-row relative pt-4"
+              >
+                {proj.websiteLink && (
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative inline-flex items-center gap-3 px-8 py-4 text-sm font-bold text-white bg-gradient-to-r from-secondary via-primary to-secondary rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 group overflow-hidden"
+                    href={proj.websiteLink}
+                    target="_blank"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <GlobeAltIcon className="w-6 h-6 z-10 group-hover:rotate-12 transition-transform duration-300" />
+                    <span className="z-10">Visit Project</span>
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5 }}
+                      className="z-10"
+                    >
+                      →
+                    </motion.span>
+                  </motion.a>
+                )}
+              </motion.div>
+              
+              {/* Technologies section with modern styling */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+                className="relative pt-8"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                    className="h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
+                  />
+                  <motion.span 
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.htmlLogo}
-                      alt="html logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ delay: 0.8 }}
+                    className="uppercase px-4 py-2 bg-gradient-to-r from-secondary/10 to-primary/10 dark:from-secondary/20 dark:to-primary/20 rounded-full text-xs font-bold text-secondary dark:text-white whitespace-nowrap backdrop-blur-sm border border-secondary/20"
+                  >
+                    💻 Tech Stack
+                  </motion.span>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                    className="h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
+                  />
+                </div>
+              </motion.div>
+              
+              {/* Technology icons grid with enhanced animations */}
+              <div className="flex flex-wrap items-center gap-3 py-6">
+                {proj.html && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 0.9
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.htmlLogo}
+                        alt="html logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">HTML</span>
+                    </div>
                   </motion.div>
                 )}
                 {proj.css && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.15 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.cssLogo}
-                      alt="css logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 0.95
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.cssLogo}
+                        alt="css logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">CSS</span>
+                    </div>
                   </motion.div>
                 )}
                 {proj.javascript && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.javascriptLogo}
-                      alt="javascript logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.0
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.javascriptLogo}
+                        alt="javascript logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">JavaScript</span>
+                    </div>
                   </motion.div>
                 )}
                 {proj.react && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.25 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.reactLogo}
-                      alt="react logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.05
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.reactLogo}
+                        alt="react logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">React</span>
+                    </div>
                   </motion.div>
                 )}
                 {proj.next && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.3 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.htmlLogo}
-                      alt="nextJS logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.1
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.htmlLogo}
+                        alt="nextJS logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Next.js</span>
+                    </div>
                   </motion.div>
                 )}
                 {proj.hubspot && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.35 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.hubspotLogo}
-                      alt="hubspot logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.15
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.hubspotLogo}
+                        alt="hubspot logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">HubSpot</span>
+                    </div>
                   </motion.div>
                 )}
                 {proj.tailwind && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.tailwindLogo}
-                      alt="tailwind logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.2
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.tailwindLogo}
+                        alt="tailwind logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Tailwind</span>
+                    </div>
                   </motion.div>
                 )}
-                     {proj.postgresql && (
+                {proj.postgresql && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.45 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.postgresqlLogo}
-                      alt="postgres logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.25
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.postgresqlLogo}
+                        alt="postgres logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">PostgreSQL</span>
+                    </div>
                   </motion.div>
                 )}
-
-                   {proj.mongodb && (
+                {proj.mongodb && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.mongodbLogo}
-                      alt="mongodb logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.3
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.mongodbLogo}
+                        alt="mongodb logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">MongoDB</span>
+                    </div>
                   </motion.div>
-                   )}
-                   {proj.elixir && (
+                )}
+                {proj.elixir && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.55 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.elixirLogo}
-                      alt="elixir logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.35
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.elixirLogo}
+                        alt="elixir logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Elixir</span>
+                    </div>
                   </motion.div>
-                   )}
-                   {proj.erlang && (
+                )}
+                {proj.erlang && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.erlangLogo}
-                      alt="erlang logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.4
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.erlangLogo}
+                        alt="erlang logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Erlang</span>
+                    </div>
                   </motion.div>
-                   )}
-                   {proj.phoenix && (
+                )}
+                {proj.phoenix && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.65 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.phoenixLogo}
-                      alt="phoenix logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.45
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.phoenixLogo}
+                        alt="phoenix logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Phoenix</span>
+                    </div>
                   </motion.div>
-                   )}
-                   {proj.typescript && (
+                )}
+                {proj.typescript && (
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    className="flex flex-col justify-center items-center gap-4 py-4 px-4 bg-gray-50 rounded-full filter shadow-md cursor-pointer hover:bg-neutral-300 dark:bg-primary-400 dark:hover:bg-primary-300">
-                    <img
-                      className="h-8 object-contain dark:filter dark:invert"
-                      src={images.typescriptLogo}
-                      alt="typescript logo"
-                      width={32}
-                      height={32}
-                    />
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.5
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.typescriptLogo}
+                        alt="typescript logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">TypeScript</span>
+                    </div>
                   </motion.div>
-                   )}
+                )}
+                {proj.docker && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 1.55
+                    }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: [0, -10, 10, 0],
+                      y: -8,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative group/tech">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                      <img
+                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        src={images.dockerLogo}
+                        alt="docker logo"
+                      />
+                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Docker</span>
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </div>
-            <div className="w-full z-10 relative md:w-1/2">
-              {!isLoaded && (
-                <div className="absolute bg-primary-400 animate-pulse w-full rounded-lg filter shadow-lg object-cover h-[340px]" />
-              )}
-              <img
-                className="w-full rounded-lg filter shadow-lg object-contain h-auto"
-                loading="lazy"
-                width={684}
-                height={355}
-                src={proj.image}
-                alt={proj.heading}
-                onLoad={() => setIsLoaded(true)}
-              />
-            </div>
+            
+            {/* Project image with enhanced styling */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                delay: 0.3
+              }}
+              className="w-full z-10 relative md:w-1/2"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+                className="relative group/img"
+                style={{ perspective: "1000px" }}
+              >
+                {/* Animated glow effect */}
+                <motion.div
+                  animate={{
+                    opacity: [0.5, 0.8, 0.5],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute -inset-2 bg-gradient-to-r from-secondary via-primary to-purple-600 rounded-3xl blur-2xl opacity-30 group-hover/img:opacity-60 transition-opacity duration-500"
+                />
+                
+                {/* Loading skeleton */}
+                {!isLoaded && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse rounded-2xl" />
+                )}
+                
+                {/* Image container */}
+                <div className="relative overflow-hidden rounded-2xl border-2 border-gray-200 dark:border-gray-700 shadow-2xl">
+                  <img
+                    className="w-full h-auto object-cover transition-all duration-500 group-hover/img:scale-110"
+                    loading="lazy"
+                    width={684}
+                    height={355}
+                    src={proj.image}
+                    alt={proj.heading}
+                    onLoad={() => setIsLoaded(true)}
+                  />
+                  {/* Overlay on hover */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center p-6"
+                  >
+                    <motion.p
+                      initial={{ y: 20, opacity: 0 }}
+                      whileHover={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
+                      className="text-white font-bold text-lg"
+                    >
+                      View Project →
+                    </motion.p>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

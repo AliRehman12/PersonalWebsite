@@ -100,7 +100,7 @@ const HeroSection = () => {
                   transition={{ delay: 1.4, duration: 0.6 }}
                   className="mt-4 flex flex-wrap justify-center gap-3 text-sm md:text-base lg:text-lg font-semibold"
                 >
-                  {['Elixir', 'Phoenix', 'Next.js', 'MERN', 'TypeScript', 'Kotlin'].map((tech, index) => (
+                  {['Elixir', 'Phoenix', 'NEXT.js', 'MERN', 'TypeScript'].map((tech, index) => (
                     <motion.span
                       key={tech}
                       initial={{ opacity: 0, y: 10 }}
