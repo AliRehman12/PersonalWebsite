@@ -30,12 +30,8 @@ const logos = [
     title: "React",
   },
   {
-    image: images.nextjsLogo,
-    title: "Next.js",
-  },
-  {
-    image: images.typescriptLogo,
-    title: "TypeScript",
+    image: images.nextLogo,
+    title: "NextJS",
   },
   {
     image: images.hubspotLogo,
@@ -43,39 +39,15 @@ const logos = [
   },
   {
     image: images.mongodbLogo,
-    title: "MongoDB",
+    title: "Mongodb",
   },
   {
     image: images.nodejsLogo,
-    title: "Node.js",
+    title: "Nodejs",
   },
   {
     image: images.postgresqlLogo,
     title: "PostgreSQL",
-  },
-  {
-    image: images.elixirLogo,
-    title: "Elixir",
-  },
-  {
-    image: images.erlangLogo,
-    title: "Erlang",
-  },
-  {
-    image: images.phoenixLogo,
-    title: "Phoenix",
-  },
-  {
-    image: images.cloudflareLogo,
-    title: "Cloudflare",
-  },
-  {
-    image: images.runpodLogo,
-    title: "RunPod",
-  },
-  {
-    image: images.minioLogo,
-    title: "Minio",
   },
 ];
 
@@ -83,24 +55,6 @@ const logos = [
 
 const TabSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const profileImages = [
-    images.myPic1,
-    images.felixImage,
-    images.myPic2,
-    images.myPic3
-  ];
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % profileImages.length
-      );
-    }, 4000); // Change image every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [profileImages.length]);
 
   return (
     <>
@@ -151,30 +105,25 @@ const TabSection = () => {
             {!isLoaded && (
               <div className="absolute top-0 rounded-lg left-0 z-50 bg-primary-400 animate-pulse w-full md:h-[450px]" />
             )}
-            <motion.img
-              key={currentImageIndex}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.5 }}
-              src={profileImages[currentImageIndex]}
-              className="h-full w-full z-10 object-contain rounded-lg filter shadow-lg"
-              alt="Ali Rehman Profile"
-              loading="lazy"
-              width={604}
-              height={450}
-              onLoad={() => setIsLoaded(true)}
-            />
+         <img
+  src={images.felixImage}
+  className="h-full w-full z-10 object-contain rounded-lg filter shadow-lg"
+  alt="Image Felix"
+  loading="lazy"
+  width={604}
+  height={450}
+  onLoad={() => setIsLoaded(true)}
+/>
           </motion.div>
         </TabPanel>
         <TabPanel className="flex gap-20 items-center flex-col md:flex-row-reverse transition-all">
-          <div className="w-full text-center text-white max-w-7xl mx-auto">
+          <div className="w-full text-center text-white max-w-3xl mx-auto md:h-[450px]">
             <motion.div
               viewport={{ once: true }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ type: "linear", duration: 0.5 }}
-              className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 lg:mt-8"
+              className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 lg:mt-8"
             >
               {logos.map((logo, index) => (
                 <div

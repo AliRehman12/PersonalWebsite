@@ -6,14 +6,31 @@ const TwoColumnCard = () => {
   return (
     <>
       {/* DevnTech Current Position */}
-      <div
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
         className="grid grid-cols-1 gap-10 items-center md:grid-cols-2 mb-16"
       >
-        <div
+        <motion.div
+          variants={{
+            offscreen: {
+              y: 150,
+            },
+            onscreen: {
+              y: 0,
+              rotate: [0, 10, -10, 0],
+              transition: {
+                type: "spring",
+                bounce: 0.4,
+                duration: 1,
+              },
+            },
+          }}
           className="cursor-pointer bg-gray-50 px-6 py-16 rounded-3xl h-full filter shadow-md relative md:px-10 dark:bg-primary-500"
         >
           <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
-            TECH N DEV Islamabad
+            DevnTech Islamabad
             <span className="mt-4 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
               <CalendarIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
               JULY, 2025 - PRESENT
@@ -51,8 +68,22 @@ const TwoColumnCard = () => {
               Participating in code reviews, testing, and maintaining high-quality code standards throughout the development lifecycle.
             </li>
           </ul>
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          variants={{
+            offscreen: {
+              y: 300,
+            },
+            onscreen: {
+              y: 0,
+              rotate: [0, 10, -10, 0],
+              transition: {
+                type: "spring",
+                bounce: 0.4,
+                duration: 1.5,
+              },
+            },
+          }}
           className="bg-gray-50 px-6 py-16 rounded-3xl h-full relative filter shadow-md md:px-10 dark:bg-primary-500"
         >
           <div className="text-center">
@@ -60,7 +91,7 @@ const TwoColumnCard = () => {
               Current Role
             </h3>
             <p className="text-lg text-primary-400 dark:text-neutral-200 mb-6">
-              Full Stack Developer at TECH N DEV
+              Full Stack Development at DevnTechs
             </p>
             <div className="bg-primary-100 dark:bg-primary-600 rounded-lg p-6">
               <p className="text-primary-600 dark:text-primary-200 font-medium mb-4">
@@ -116,14 +147,32 @@ const TwoColumnCard = () => {
               
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Previous Experience Section */}
-      <div
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
         className="grid grid-cols-1 gap-10 items-center md:grid-cols-2"
       >
-      <div
+      <motion.div
+        variants={{
+          offscreen: {
+            y: 150,
+          },
+          onscreen: {
+            y: 0,
+            rotate: [0, 10, -10, 0],
+            transition: {
+              type: "spring",
+              bounce: 0.4,
+              duration: 1,
+            },
+          },
+        }}
+        whileHover={{ scale: 1.02 }}
         className="cursor-pointer bg-gray-50 px-6 py-16 rounded-3xl h-full filter shadow-md relative md:px-10 dark:bg-primary-500"
       >
         <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
@@ -169,8 +218,23 @@ const TwoColumnCard = () => {
           </li>
 
         </ul>
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        variants={{
+          offscreen: {
+            y: 300,
+          },
+          onscreen: {
+            y: 0,
+             rotate: [0, 10, -10, 0],
+            transition: {
+              type: "spring",
+              bounce: 0.4,
+              duration: 1.5,
+            },
+          },
+        }}
+        whileHover={{ scale: 1.02 }}
         className="bg-gray-50 px-6 py-16 rounded-3xl h-full relative filter shadow-md md:px-10 dark:bg-primary-500"
       >
         <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
@@ -219,8 +283,8 @@ const TwoColumnCard = () => {
             development services.
           </li>
         </ul>
-      </div>
-      </div>
+      </motion.div>
+      </motion.div>
     </>
   );
 };
