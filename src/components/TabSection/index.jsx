@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import images from "../../constants/image";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
+import pic1 from "../../assets/pic .jpeg";
+import pic2 from "../../assets/pic 1.jpeg";
+import pic3 from "../../assets/pic 2.jpeg";
+import pic4 from "../../assets/my_pic.png";
 const logos = [
   {
     image: images.htmlLogo,
@@ -16,6 +20,10 @@ const logos = [
   {
     image: images.javascriptLogo,
     title: "JavaScript",
+  },
+  {
+    image: images.typescriptLogo,
+    title: "TypeScript",
   },
   {
     image: images.gitLogo,
@@ -39,22 +47,47 @@ const logos = [
   },
   {
     image: images.mongodbLogo,
-    title: "Mongodb",
+    title: "MongoDB",
   },
   {
     image: images.nodejsLogo,
-    title: "Nodejs",
+    title: "Node.js",
   },
   {
     image: images.postgresqlLogo,
     title: "PostgreSQL",
   },
+  {
+    image: images.elixirLogo,
+    title: "Elixir",
+  },
+  {
+    image: images.erlangLogo,
+    title: "Erlang",
+  },
+  {
+    image: images.phoenixLogo,
+    title: "Phoenix",
+  },
+  {
+    image: images.kotlinLogo,
+    title: "Kotlin",
+  },
 ];
 
-
+const carouselImages = [pic1, pic2, pic3, pic4];
 
 const TabSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -105,19 +138,27 @@ const TabSection = () => {
             {!isLoaded && (
               <div className="absolute top-0 rounded-lg left-0 z-50 bg-primary-400 animate-pulse w-full md:h-[450px]" />
             )}
-         <img
-  src={images.felixImage}
-  className="h-full w-full z-10 object-contain rounded-lg filter shadow-lg"
-  alt="Image Felix"
-  loading="lazy"
-  width={604}
-  height={450}
-  onLoad={() => setIsLoaded(true)}
-/>
+            <div className="relative w-full h-full">
+              {carouselImages.map((img, index) => (
+                <motion.img
+                  key={index}
+                  src={img}
+                  className="absolute inset-0 h-full w-full z-10 object-contain rounded-lg filter shadow-lg"
+                  alt={`Ali Rehman ${index + 1}`}
+                  loading="lazy"
+                  width={604}
+                  height={450}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: currentImageIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                  onLoad={() => setIsLoaded(true)}
+                />
+              ))}
+            </div>
           </motion.div>
         </TabPanel>
         <TabPanel className="flex gap-20 items-center flex-col md:flex-row-reverse transition-all">
-          <div className="w-full text-center text-white max-w-3xl mx-auto md:h-[450px]">
+          <div className="w-full text-center text-white max-w-5xl mx-auto">
             <motion.div
               viewport={{ once: true }}
               initial={{ opacity: 0, y: 20 }}
@@ -126,12 +167,17 @@ const TabSection = () => {
               className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 lg:mt-8"
             >
               {logos.map((logo, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="flex flex-col justify-center items-center gap-4 py-8 px-8 bg-gray-50 rounded-xl filter shadow-md dark:bg-primary-400"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                  whileHover={{ y: -8, scale: 1.05 }}
+                  className="flex flex-col justify-center items-center gap-4 py-8 px-8 bg-white rounded-xl filter shadow-lg hover:shadow-2xl dark:bg-gray-900 border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80 transition-all duration-300"
                 >
                   <img
-                    className="h-14 object-contain dark:filter dark:invert"
+                    className="h-14 object-contain grayscale"
                     src={logo.image}
                     alt={logo.title}
                     loading="lazy"
@@ -141,7 +187,7 @@ const TabSection = () => {
                   <h6 className="text-xl font-semibold text-primary dark:text-white">
                     {logo.title}
                   </h6>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>

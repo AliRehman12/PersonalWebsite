@@ -6,31 +6,16 @@ const TwoColumnCard = () => {
   return (
     <>
       {/* DevnTech Current Position */}
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 gap-10 items-center md:grid-cols-2 mb-16"
-      >
-        <motion.div
-          variants={{
-            offscreen: {
-              y: 150,
-            },
-            onscreen: {
-              y: 0,
-              rotate: [0, 10, -10, 0],
-              transition: {
-                type: "spring",
-                bounce: 0.4,
-                duration: 1,
-              },
-            },
-          }}
-          className="cursor-pointer bg-gray-50 px-6 py-16 rounded-3xl h-full filter shadow-md relative md:px-10 dark:bg-primary-500"
-        >
+      <div className="grid grid-cols-1 gap-10 items-center md:grid-cols-2 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5, scale: 1.02 }}
+          className="cursor-pointer bg-white dark:bg-gray-900 px-6 py-16 rounded-3xl h-full filter shadow-lg hover:shadow-2xl relative md:px-10 border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-opacity-90 transition-all duration-300">
           <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
-            DevnTech Islamabad
+            Tech N Dev Islamabad
             <span className="mt-4 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
               <CalendarIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
               JULY, 2025 - PRESENT
@@ -69,23 +54,13 @@ const TwoColumnCard = () => {
             </li>
           </ul>
         </motion.div>
-        <motion.div
-          variants={{
-            offscreen: {
-              y: 300,
-            },
-            onscreen: {
-              y: 0,
-              rotate: [0, 10, -10, 0],
-              transition: {
-                type: "spring",
-                bounce: 0.4,
-                duration: 1.5,
-              },
-            },
-          }}
-          className="bg-gray-50 px-6 py-16 rounded-3xl h-full relative filter shadow-md md:px-10 dark:bg-primary-500"
-        >
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          whileHover={{ y: -5, scale: 1.02 }}
+          className="bg-white dark:bg-gray-900 px-6 py-16 rounded-3xl h-full relative filter shadow-lg hover:shadow-2xl md:px-10 border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-opacity-90 transition-all duration-300">
           <div className="text-center">
             <h3 className="text-3xl font-bold text-primary dark:text-white mb-4">
               Current Role
@@ -148,34 +123,18 @@ const TwoColumnCard = () => {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Previous Experience Section */}
+      <div className="grid grid-cols-1 gap-10 items-center md:grid-cols-2">
       <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="grid grid-cols-1 gap-10 items-center md:grid-cols-2"
-      >
-      <motion.div
-        variants={{
-          offscreen: {
-            y: 150,
-          },
-          onscreen: {
-            y: 0,
-            rotate: [0, 10, -10, 0],
-            transition: {
-              type: "spring",
-              bounce: 0.4,
-              duration: 1,
-            },
-          },
-        }}
-        whileHover={{ scale: 1.02 }}
-        className="cursor-pointer bg-gray-50 px-6 py-16 rounded-3xl h-full filter shadow-md relative md:px-10 dark:bg-primary-500"
-      >
-        <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
+        transition={{ duration: 0.5 }}
+        whileHover={{ y: -5, scale: 1.02 }}
+        className="cursor-pointer bg-white dark:bg-gray-900 px-6 py-16 rounded-3xl h-full filter shadow-lg hover:shadow-2xl relative md:px-10 border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-opacity-90 transition-all duration-300"
+      >        <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
         
           <span className="mt-4 text-xs flex items-center justify-start uppercase text-neutral-600 dark:text-neutral-300">
             <CalendarIcon className="h-4 mr-2 text-neutral-600 dark:text-neutral-300" />
@@ -220,24 +179,13 @@ const TwoColumnCard = () => {
         </ul>
       </motion.div>
       <motion.div
-        variants={{
-          offscreen: {
-            y: 300,
-          },
-          onscreen: {
-            y: 0,
-             rotate: [0, 10, -10, 0],
-            transition: {
-              type: "spring",
-              bounce: 0.4,
-              duration: 1.5,
-            },
-          },
-        }}
-        whileHover={{ scale: 1.02 }}
-        className="bg-gray-50 px-6 py-16 rounded-3xl h-full relative filter shadow-md md:px-10 dark:bg-primary-500"
-      >
-        <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        whileHover={{ y: -5, scale: 1.02 }}
+        className="bg-white dark:bg-gray-900 px-6 py-16 rounded-3xl h-full relative filter shadow-lg hover:shadow-2xl md:px-10 border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-opacity-90 transition-all duration-300"
+      >        <h6 className="text-2xl font-bold text-primary mb-4 dark:text-white">
           <a
             href="https://www.upwork.com/freelancers/~01f9379003e416d3aa"
             target="_blank"
@@ -284,7 +232,7 @@ const TwoColumnCard = () => {
           </li>
         </ul>
       </motion.div>
-      </motion.div>
+      </div>
     </>
   );
 };
