@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import images from "../../constants/image";
 
@@ -13,24 +12,34 @@ export const Form = () => {
   const [successState, setSuccessState] = useState(false);
   const [errorState, setErrorState] = useState(false);
 
-  const sendEmail = (formData) => {
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAIL_JS_SERVICE_ID, // EmailJS service ID
-        import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID, // EmailJS template ID
-        formData,
-        import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY // EmailJS public key
-      )
-      .then(
-        (result) => {
-          setSuccessState(true);
-          console.log("Email successfully sent:", result.text);
+  const sendEmail = async (formData) => {
+    try {
+      // Use relative URL - works in both dev and production
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/send-email' 
+        : 'http://localhost:5000/api/send-email';
+        
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        (error) => {
-          setErrorState(true);
-          console.error("Email sending error:", error.text);
-        }
-      );
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSuccessState(true);
+        console.log("Email successfully sent:", data.messageId);
+      } else {
+        setErrorState(true);
+        console.error("Email sending error:", data.message);
+      }
+    } catch (error) {
+      setErrorState(true);
+      console.error("Email sending error:", error);
+    }
 
     return new Promise((resolve) => {
       setTimeout(() => {

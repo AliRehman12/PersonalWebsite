@@ -98,11 +98,11 @@ const TabSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ type: "linear", duration: 0.5 }}
         >
-          <TabList className="bg-primary flex flex-col justify-center items-center mx-auto rounded-xl mb-16 w-full dark:bg-primary-500 md:w-max md:flex-row">
-            <Tab className="text-black w-full text-center cursor-pointer px-8 py-4 font-semibold focus-within:bg-secondary-400 md:w-max dark:focus-within:bg-secondary rounded-t-xl md:rounded-l-xl md:rounded-tr-none">
+          <TabList className="bg-white flex flex-col justify-center items-center mx-auto rounded-xl mb-16 w-full dark:bg-gray-800 md:w-max md:flex-row shadow-lg border border-gray-200 dark:border-gray-700">
+            <Tab className="text-black bg-transparent w-full text-center cursor-pointer px-8 py-4 font-semibold focus-within:bg-secondary-400 focus-within:text-white md:w-max dark:text-white dark:focus-within:bg-secondary rounded-t-xl md:rounded-l-xl md:rounded-tr-none transition-all">
               Know me more
             </Tab>
-            <Tab className="text-black w-full text-center cursor-pointer  px-8 py-4 font-semibold focus-within:bg-secondary-400 md:w-max dark:focus-within:bg-secondary rounded-t-none rounded-b-xl md:rounded-l-none md:rounded-r-xl">
+            <Tab className="text-black bg-transparent w-full text-center cursor-pointer  px-8 py-4 font-semibold focus-within:bg-secondary-400 focus-within:text-white md:w-max dark:text-white dark:focus-within:bg-secondary rounded-t-none rounded-b-xl md:rounded-l-none md:rounded-r-xl transition-all">
               Technical Skills
             </Tab>
           </TabList>
@@ -133,17 +133,17 @@ const TabSection = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "linear", duration: 0.5 }}
-            className="w-full relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px]"
+            className="w-full relative md:w-1/2 md:h-[450px]"
           >
             {!isLoaded && (
-              <div className="absolute top-0 rounded-lg left-0 z-50 bg-primary-400 animate-pulse w-full h-full" />
+              <div className="absolute top-0 rounded-lg left-0 z-50 bg-primary-400 animate-pulse w-full md:h-[450px]" />
             )}
             <div className="relative w-full h-full">
               {carouselImages.map((img, index) => (
                 <motion.img
                   key={index}
                   src={img}
-                  className="absolute inset-0 h-full w-full z-10 object-cover sm:object-contain rounded-lg filter shadow-lg"
+                  className="absolute inset-0 h-full w-full z-10 object-contain rounded-lg filter shadow-lg"
                   alt={`Ali Rehman ${index + 1}`}
                   loading="lazy"
                   width={604}
