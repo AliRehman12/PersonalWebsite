@@ -133,17 +133,17 @@ const TabSection = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "linear", duration: 0.5 }}
-            className="w-full relative md:w-1/2 md:h-[450px]"
+            className="w-full relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px]"
           >
             {!isLoaded && (
-              <div className="absolute top-0 rounded-lg left-0 z-50 bg-primary-400 animate-pulse w-full md:h-[450px]" />
+              <div className="absolute top-0 rounded-lg left-0 z-50 bg-primary-400 animate-pulse w-full h-full" />
             )}
             <div className="relative w-full h-full">
               {carouselImages.map((img, index) => (
                 <motion.img
                   key={index}
                   src={img}
-                  className="absolute inset-0 h-full w-full z-10 object-contain rounded-lg filter shadow-lg"
+                  className="absolute inset-0 h-full w-full z-10 object-cover sm:object-contain rounded-lg filter shadow-lg"
                   alt={`Ali Rehman ${index + 1}`}
                   loading="lazy"
                   width={604}
