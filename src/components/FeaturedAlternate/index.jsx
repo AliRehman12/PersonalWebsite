@@ -121,7 +121,7 @@ const CardGrid = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-20 mt-32 md:gap-40 lg:gap-60">
+      <div className="flex flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-40 xl:gap-60 mt-16 sm:mt-20 md:mt-32 px-4 sm:px-6 md:px-0">
         {projects.map((proj, projectIndex) => (
           <motion.div
             viewport={{ once: true }}
@@ -137,7 +137,7 @@ const CardGrid = () => {
             key={proj.id}
             onHoverStart={() => setHoveredProject(proj.id)}
             onHoverEnd={() => setHoveredProject(null)}
-            className="featured-alt flex even:flex-col-reverse odd:flex-col-reverse gap-10 items-start relative md:gap-20 md:even:flex-row md:odd:flex-row-reverse group"
+            className="featured-alt flex even:flex-col-reverse odd:flex-col-reverse gap-6 sm:gap-8 md:gap-10 lg:gap-20 items-start relative md:even:flex-row md:odd:flex-row-reverse group"
           >
             {/* Animated gradient background */}
             <motion.div 
@@ -152,12 +152,12 @@ const CardGrid = () => {
               whileInView={{ opacity: 0.15, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="featured-no absolute text-[10rem] lg:text-[12rem] font-bold bg-gradient-to-br from-secondary to-primary bg-clip-text text-transparent -top-32 hidden xl:block"
+              className="featured-no absolute text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] font-bold bg-gradient-to-br from-secondary to-primary bg-clip-text text-transparent -top-12 sm:-top-16 md:-top-24 lg:-top-32 hidden md:block"
             >
               0{proj.id}
             </motion.span>
             
-            <div className="w-full z-10 md:w-1/2 space-y-6">
+            <div className="w-full z-10 md:w-1/2 space-y-4 sm:space-y-5 md:space-y-6">
               {/* Title with gradient and animation */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -167,7 +167,7 @@ const CardGrid = () => {
               >
                 <motion.h3 
                   whileHover={{ scale: 1.02 }}
-                  className="text-primary text-4xl lg:text-5xl font-bold mb-4 dark:text-white bg-gradient-to-r from-primary via-secondary to-primary dark:from-white dark:via-secondary dark:to-white bg-clip-text hover:text-transparent transition-all duration-300 cursor-default"
+                  className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 dark:text-white bg-gradient-to-r from-primary via-secondary to-primary dark:from-white dark:via-secondary dark:to-white bg-clip-text hover:text-transparent transition-all duration-300 cursor-default"
                 >
                   {proj.heading}
                 </motion.h3>
@@ -179,10 +179,10 @@ const CardGrid = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="backdrop-blur-md bg-white/30 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="backdrop-blur-md bg-white/30 dark:bg-gray-900/50 p-4 sm:p-5 md:p-6 rounded-xl md:rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 <RichText
-                  className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
+                  className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed"
                   content={proj.description}
                 />
               </motion.div>
@@ -193,23 +193,23 @@ const CardGrid = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="flex flex-row relative pt-4"
+                className="flex flex-row relative pt-2 sm:pt-3 md:pt-4"
               >
                 {proj.websiteLink && (
                   <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="relative inline-flex items-center gap-3 px-8 py-4 text-sm font-bold text-white bg-gradient-to-r from-secondary via-primary to-secondary rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 group overflow-hidden"
+                    className="relative inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-secondary via-primary to-secondary rounded-lg sm:rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 group overflow-hidden"
                     href={proj.websiteLink}
                     target="_blank"
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <GlobeAltIcon className="w-6 h-6 z-10 group-hover:rotate-12 transition-transform duration-300" />
+                    <GlobeAltIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 z-10 group-hover:rotate-12 transition-transform duration-300" />
                     <span className="z-10">Visit Project</span>
                     <motion.span
                       animate={{ x: [0, 5, 0] }}
                       transition={{ repeat: Infinity, duration: 1.5 }}
-                      className="z-10"
+                      className="z-10 hidden sm:inline"
                     >
                       →
                     </motion.span>
@@ -223,9 +223,9 @@ const CardGrid = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className="relative pt-8"
+                className="relative pt-4 sm:pt-6 md:pt-8"
               >
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-5 md:mb-6">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: "100%" }}
@@ -238,7 +238,7 @@ const CardGrid = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.8 }}
-                    className="uppercase px-4 py-2 bg-gradient-to-r from-secondary/10 to-primary/10 dark:from-secondary/20 dark:to-primary/20 rounded-full text-xs font-bold text-secondary dark:text-white whitespace-nowrap backdrop-blur-sm border border-secondary/20"
+                    className="uppercase px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-secondary/10 to-primary/10 dark:from-secondary/20 dark:to-primary/20 rounded-full text-[10px] sm:text-xs font-bold text-secondary dark:text-white whitespace-nowrap backdrop-blur-sm border border-secondary/20"
                   >
                     💻 Tech Stack
                   </motion.span>
@@ -253,7 +253,7 @@ const CardGrid = () => {
               </motion.div>
               
               {/* Technology icons grid with enhanced animations */}
-              <div className="flex flex-wrap items-center gap-3 py-6">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 md:gap-3 py-4 sm:py-5 md:py-6">
                 {proj.html && (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0, rotate: -180 }}
@@ -272,14 +272,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl sm:rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.htmlLogo}
                         alt="html logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">HTML</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">HTML</span>
                     </div>
                   </motion.div>
                 )}
@@ -301,14 +301,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.cssLogo}
                         alt="css logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">CSS</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">CSS</span>
                     </div>
                   </motion.div>
                 )}
@@ -330,14 +330,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.javascriptLogo}
                         alt="javascript logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">JavaScript</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">JavaScript</span>
                     </div>
                   </motion.div>
                 )}
@@ -359,14 +359,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.reactLogo}
                         alt="react logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">React</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">React</span>
                     </div>
                   </motion.div>
                 )}
@@ -388,14 +388,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.htmlLogo}
                         alt="nextJS logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Next.js</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">Next.js</span>
                     </div>
                   </motion.div>
                 )}
@@ -417,14 +417,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.hubspotLogo}
                         alt="hubspot logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">HubSpot</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">HubSpot</span>
                     </div>
                   </motion.div>
                 )}
@@ -446,14 +446,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.tailwindLogo}
                         alt="tailwind logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Tailwind</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">Tailwind</span>
                     </div>
                   </motion.div>
                 )}
@@ -475,14 +475,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.postgresqlLogo}
                         alt="postgres logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">PostgreSQL</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">PostgreSQL</span>
                     </div>
                   </motion.div>
                 )}
@@ -504,14 +504,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.mongodbLogo}
                         alt="mongodb logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">MongoDB</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">MongoDB</span>
                     </div>
                   </motion.div>
                 )}
@@ -533,14 +533,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.elixirLogo}
                         alt="elixir logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Elixir</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">Elixir</span>
                     </div>
                   </motion.div>
                 )}
@@ -562,14 +562,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.erlangLogo}
                         alt="erlang logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Erlang</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">Erlang</span>
                     </div>
                   </motion.div>
                 )}
@@ -591,14 +591,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.phoenixLogo}
                         alt="phoenix logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Phoenix</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">Phoenix</span>
                     </div>
                   </motion.div>
                 )}
@@ -620,14 +620,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.typescriptLogo}
                         alt="typescript logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">TypeScript</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">TypeScript</span>
                     </div>
                   </motion.div>
                 )}
@@ -649,14 +649,14 @@ const CardGrid = () => {
                       transition: { duration: 0.3 }
                     }}
                     className="relative group/tech">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
-                    <div className="relative flex flex-col justify-center items-center p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl sm:rounded-2xl blur-md opacity-0 group-hover/tech:opacity-75 transition-opacity duration-300" />
+                    <div className="relative flex flex-col justify-center items-center p-3 sm:p-4 md:p-5 bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 backdrop-blur-sm cursor-pointer">
                       <img
-                        className="h-10 w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
+                        className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-all duration-300 group-hover/tech:scale-110"
                         src={images.dockerLogo}
                         alt="docker logo"
                       />
-                      <span className="absolute -bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-lg whitespace-nowrap">Docker</span>
+                      <span className="absolute -bottom-6 sm:-bottom-8 opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300 text-[10px] sm:text-xs font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded shadow-lg whitespace-nowrap">Docker</span>
                     </div>
                   </motion.div>
                 )}
@@ -693,16 +693,16 @@ const CardGrid = () => {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="absolute -inset-2 bg-gradient-to-r from-secondary via-primary to-purple-600 rounded-3xl blur-2xl opacity-30 group-hover/img:opacity-60 transition-opacity duration-500"
+                  className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-secondary via-primary to-purple-600 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-30 group-hover/img:opacity-60 transition-opacity duration-500"
                 />
                 
                 {/* Loading skeleton */}
                 {!isLoaded && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 animate-pulse rounded-xl sm:rounded-2xl" />
                 )}
                 
                 {/* Image container */}
-                <div className="relative overflow-hidden rounded-2xl border-2 border-gray-200 dark:border-gray-700 shadow-2xl">
+                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-gray-200 sm:border-2 dark:border-gray-700 shadow-xl sm:shadow-2xl">
                   <img
                     className="w-full h-auto object-cover transition-all duration-500 group-hover/img:scale-110"
                     loading="lazy"
@@ -716,13 +716,13 @@ const CardGrid = () => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center p-6"
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end justify-center p-4 sm:p-6"
                   >
                     <motion.p
                       initial={{ y: 20, opacity: 0 }}
                       whileHover={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1 }}
-                      className="text-white font-bold text-lg"
+                      className="text-white font-bold text-sm sm:text-base md:text-lg"
                     >
                       View Project →
                     </motion.p>
