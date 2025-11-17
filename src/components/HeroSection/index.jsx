@@ -41,35 +41,35 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-12 bg-gray-900 dark:bg-black rounded-3xl shadow-2xl p-12 md:p-16 lg:p-20 border-2 border-gray-700 dark:border-gray-600 max-w-5xl w-full backdrop-blur-lg bg-opacity-95 hover:shadow-3xl transition-all duration-300"
+              className="mb-8 md:mb-12 bg-gray-900 dark:bg-black rounded-2xl md:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 border-2 border-gray-700 dark:border-gray-600 max-w-5xl w-full backdrop-blur-lg bg-opacity-95 hover:shadow-3xl transition-all duration-300 mx-4"
             >
-              <div className="flex items-center gap-4 mb-10">
-                <div className="w-5 h-5 rounded-full bg-red-500 hover:bg-red-400 transition-colors cursor-pointer"></div>
-                <div className="w-5 h-5 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
-                <div className="w-5 h-5 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-6 md:mb-10">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-red-500 hover:bg-red-400 transition-colors cursor-pointer"></div>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
               </div>
-              <div className="font-mono text-xl md:text-2xl lg:text-3xl space-y-6">
-                <div className="flex items-center gap-4">
-                  <span className="text-green-400 text-2xl md:text-3xl lg:text-4xl">$</span>
-                  <span className="text-gray-300">whoami</span>
+              <div className="font-mono text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl space-y-3 sm:space-y-4 md:space-y-6">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-green-400 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">$</span>
+                  <span className="text-gray-300 break-all">whoami</span>
                 </div>
                 <motion.div 
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-blue-400 ml-10 md:ml-14 lg:ml-16 text-2xl md:text-3xl lg:text-4xl font-semibold"
+                  className="text-blue-400 ml-6 sm:ml-8 md:ml-10 lg:ml-14 xl:ml-16 text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl font-semibold break-all"
                 >
                   Ali Rehman
                 </motion.div>
-                <div className="flex items-center gap-4 mt-8">
-                  <span className="text-green-400 text-2xl md:text-3xl lg:text-4xl">$</span>
-                  <span className="text-gray-300">cat role.txt</span>
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 md:mt-8">
+                  <span className="text-green-400 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">$</span>
+                  <span className="text-gray-300 break-words">cat role.txt</span>
                 </div>
                 <motion.div 
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="text-purple-400 ml-10 md:ml-14 lg:ml-16 text-xl md:text-2xl lg:text-3xl"
+                  className="text-purple-400 ml-6 sm:ml-8 md:ml-10 lg:ml-14 xl:ml-16 text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl break-words"
                 >
                   Backend Developer | Full Stack Engineer
                 </motion.div>
