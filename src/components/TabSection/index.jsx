@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import images from "../../constants/image";
-import { ExternalLinkIcon } from "@heroicons/react/solid";
+import { ExternalLinkIcon, AcademicCapIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
 import pic1 from "../../assets/pic .jpeg";
 import pic2 from "../../assets/pic 1.jpeg";
@@ -119,12 +119,19 @@ const TabSection = () => {
                Developer | Backend Developer
             </h2>
             <p className="text-base font-normal text-neutral-700 dark:text-neutral-300">
-             Backend Engineer doing FYP in robust server-side application.
-             Proficient in Node.js, Express.js, PostgreSQL, and MongoDB, with a strong foundation in developing RESTful APIs and microservices architecture.
-             Skilled in integrating modern front-end frameworks like React and Vite to create seamless full-stack solutions.
-             Experienced in managing databases, optimizing queries, and ensuring system reliability.
-             Currently pursuing a Final Year Project at FAST University.
+             Software Engineer specializing in scalable backend architecture and cloud deployment. Expertise spans Node.js, TypeScript, and Elixir, with deep experience in building real-time applications via Socket.io. Proven ability to manage the full software lifecycle—from developing RESTful microservices and Next.js frontends to containerizing applications with Docker and deploying on AWS, GCP, and Contabo. Strong background in database management (PostgreSQL/MongoDB) and query optimization.
             </p>
+            
+            <div className="flex items-center gap-3 mt-4 p-4 bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-gray-800 dark:to-gray-700 rounded-lg border-l-4 border-yellow-500">
+              <div className="flex items-center gap-2">
+                <AcademicCapIcon className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
+                <span className="text-2xl">🏅</span>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800 dark:text-white">Graduated from FAST NUCES (2021-2025)</p>
+                <p className="text-sm text-yellow-700 dark:text-yellow-300 font-medium">🥇 Gold Medalist</p>
+              </div>
+            </div>
             <br />
           </motion.div>
 

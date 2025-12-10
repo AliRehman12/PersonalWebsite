@@ -6,6 +6,7 @@ import TwoColumnCard from "./components/TwoColumnCard";
 import FeaturedAlternate from "./components/FeaturedAlternate";
 import Footer from "./components/Footer";
 import UsesList from "./components/UsesList";
+import WhatIDo from "./components/WhatIDo";
 
 import "./index.css";
 import SectionWrapper from "./components/Global/SectionWrapper";
@@ -25,6 +26,9 @@ function App() {
           <HeroSection />
           <SectionWrapper id="about" heading="ABOUT ME">
             <TabSection />
+          </SectionWrapper>
+          <SectionWrapper id="what-i-do" heading="">
+            <WhatIDo />
           </SectionWrapper>
           <SectionWrapper id="experience" heading="EXPERIENCE">
             <TwoColumnCard />
