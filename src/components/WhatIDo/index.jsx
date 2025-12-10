@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import images from "../../constants/image";
+import mySvg from "../../assets/my.svg";
 
 const WhatIDo = () => {
   const techStack = [
@@ -83,7 +84,7 @@ const WhatIDo = () => {
                     </motion.g>
                   </g>
                   <image 
-                    href="/src/assets/my.svg" 
+                    href={mySvg}
                     width="100%" 
                     height="100%" 
                     preserveAspectRatio="xMidYMid meet"
