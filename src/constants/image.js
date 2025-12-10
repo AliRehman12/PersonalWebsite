@@ -21,6 +21,11 @@ import erlangLogo from "../assets/logo/erlang-logo.svg";
 import phoenixLogo from "../assets/logo/phoenix-logo.svg";
 import kotlinLogo from "../assets/logo/kotlin-logo.svg";
 import dockerLogo from "../assets/logo/docker-logo.svg";
+import sassLogo from "../assets/logo/sass-logo.svg";
+import npmLogo from "../assets/logo/npm-logo.svg";
+import awsLogo from "../assets/logo/aws-logo.svg";
+import firebaseLogo from "../assets/logo/firebase-logo.svg";
+import pythonLogo from "../assets/logo/python-logo.svg";
 import personalportfoliodashboard from "../assets/projects/personalportfoliodashboard.png";
 import EmpHer from "../assets/projects/EmpHer.png";
 import felixImage from "../assets/my_pic.png";
@@ -67,6 +72,11 @@ TrainflowAI,
   phoenixLogo,
   kotlinLogo,
   dockerLogo,
+  sassLogo,
+  npmLogo,
+  awsLogo,
+  firebaseLogo,
+  pythonLogo,
   felixImage,
   catifyImage,
   agencyImage,
